@@ -18,6 +18,8 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Home from 'containers/Home/Loadable';
 import Login from 'containers/LoginContainer/Loadable';
 import OAuth from 'containers/Oauth/Loadable';
+import InternalProvider from 'containers/InternalProvider/Loadable';
+import LoginProviderContainer from '../../containers/LoginProviderContainer/Loadable';
 
 export default function App() {
   return (
@@ -28,6 +30,8 @@ export default function App() {
         <Route exact path="/oauth/github" component={OAuth} />
         <Route exact path="/oauth/instagram" component={OAuth} />
         <Route exact path="/oauth/google" component={OAuth} />
+        <Route exact path="/oauth/internal" component={InternalProvider} />
+        <Route exact path="/login_provider" component={LoginProviderContainer} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

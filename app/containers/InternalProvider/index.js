@@ -10,24 +10,29 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { Jumbotron, Button } from 'react-bootstrap';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectInternalProvider from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import { checkClientAction } from './actions';
+
 
 export class InternalProvider extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>
-      </div>
+      <Jumbotron>
+        <h1>Do you want login perk account with this client?</h1>
+        <p><Button bsStyle="primary" onClick={this.props.onCheckClientAction}>Permission</Button></p>
+      </Jumbotron>
     );
   }
 }
 
 InternalProvider.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  onCheckClientAction: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -36,7 +41,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    onCheckClientAction: () => dispatch(checkClientAction()),
   };
 }
 

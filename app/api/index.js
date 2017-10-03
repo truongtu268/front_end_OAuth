@@ -21,6 +21,41 @@ export function sendOauthCode2Server(codeOauth) {
     .then(parseJSON);
 }
 
+export function checkClientOauthApi(clientIdentity) {
+  return fetch(`${API_ROOT}/oauth/authorize/client`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(clientIdentity),
+  })
+    .then(checkStatus)
+    .then(parseJSON);
+}
+
+export function checkUserOauthApi(userIdentity) {
+  return fetch(`${API_ROOT}/oauth/authorize/user`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userIdentity),
+  })
+    .then(checkStatus)
+    .then(parseJSON);
+}
+
+export function getTokenApi(codeOauth) {
+  return fetch(`${API_ROOT}/oauth/access_token`, {
+    method: 'POST',
+    body: new FormData(codeOauth),
+  })
+    .then(checkStatus)
+    .then(parseJSON);
+}
+
 export function loginGoogleApi() {
   return fetch(`${API_ROOT}/user/login/google`, {
     method: 'GET',
