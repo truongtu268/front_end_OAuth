@@ -14,14 +14,20 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import Home from 'containers/Home/Loadable';
+import Login from 'containers/LoginContainer/Loadable';
+import OAuth from 'containers/Oauth/Loadable';
 
 export default function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/oauth/github" component={OAuth} />
+        <Route exact path="/oauth/instagram" component={OAuth} />
+        <Route exact path="/oauth/google" component={OAuth} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

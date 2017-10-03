@@ -10,13 +10,12 @@
  */
 
 import React from 'react';
-// import Private from '../../components/PrivateResource';
+import Private from '../../components/PrivateResource';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>
-      </div>
+      <Private />
     );
   }
 }

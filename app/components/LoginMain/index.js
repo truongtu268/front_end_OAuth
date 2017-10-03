@@ -5,11 +5,12 @@
 */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, FormGroup, ControlLabel, Form, FormControl, Grid, Row, Col, ButtonGroup } from 'react-bootstrap';
 // import styled from 'styled-components';
 
 
-function LoginMain() {
+function LoginMain({ onLoginGoogle, onLoginGithub, onLoginInstagram, onLoginInternal }) {
   return (
     <Grid>
       <Row >
@@ -44,10 +45,10 @@ function LoginMain() {
             <FormGroup>
               <Col smOffset={2} sm={10}>
                 <ButtonGroup>
-                  <Button>Facebook</Button>
-                  <Button>Github</Button>
-                  <Button>Instagram</Button>
-                  <Button>Internal Server</Button>
+                  <Button onClick={onLoginGoogle}>Google</Button>
+                  <Button onClick={onLoginGithub}>Github</Button>
+                  <Button onClick={onLoginInstagram}>Instagram</Button>
+                  <Button onClick={onLoginInternal}>Internal Server</Button>
                 </ButtonGroup>
               </Col>
             </FormGroup>
@@ -59,7 +60,10 @@ function LoginMain() {
 }
 
 LoginMain.propTypes = {
-
+  onLoginGoogle: PropTypes.func.isRequired,
+  onLoginGithub: PropTypes.func.isRequired,
+  onLoginInstagram: PropTypes.func.isRequired,
+  onLoginInternal: PropTypes.func.isRequired,
 };
 
 export default LoginMain;
